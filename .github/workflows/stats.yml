@@ -2,7 +2,10 @@ on:
   schedule: 
     # runs once a week on sunday
     - cron: "55 23 * * 0"
-    
+  push:
+    branches: [ master ]
+    paths:
+    - '.github/workflows/stats.yml'
 jobs:
   # This workflow contains a single job called "traffic"
   traffic:
