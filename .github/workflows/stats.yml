@@ -22,6 +22,8 @@ jobs:
         workflow: stats.yml
         workflow_conclusion: success
         name: traffic
+    - name: print dir
+      run: ls -la
    
     # Calculates traffic and clones and stores in CSV file
     - name: Get new GitHub stats 
