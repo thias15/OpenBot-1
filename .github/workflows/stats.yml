@@ -24,7 +24,7 @@ jobs:
         name: traffic
         path: ./traffic/ # path/to/artifact
     - name: print dir
-      run: ls -la
+      run: ls -la traffic
    
     # Calculates traffic and clones and stores in CSV file
     - name: Get new GitHub stats 
@@ -33,7 +33,7 @@ jobs:
         TRAFFIC_ACTION_TOKEN: ${{ secrets.TRAFFIC_ACTION_TOKEN }} 
 
     - name: print dir
-      run: ls -la
+      run: ls -la traffic
       
     # Uploads new data as artifact 
     - name: Upload new stats as artifact
@@ -41,6 +41,3 @@ jobs:
       with:
         name: traffic
         path: ./traffic/ # path/to/artifact
-
-    - name: print dir
-      run: ls -la
