@@ -30,10 +30,16 @@ jobs:
       uses: sangonzal/repository-traffic-action@v0.1.4
       env:
         TRAFFIC_ACTION_TOKEN: ${{ secrets.TRAFFIC_ACTION_TOKEN }} 
-     
+
+    - name: print dir
+      run: ls -la
+      
     # Uploads new data as artifact 
     - name: Upload new stats as artifact
       uses: actions/upload-artifact@v2
       with:
         name: traffic
         path: ./traffic/ # path/to/artifact
+
+    - name: print dir
+      run: ls -la
