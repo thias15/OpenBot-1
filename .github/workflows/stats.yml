@@ -16,7 +16,7 @@ jobs:
     steps:
    
     # Gets the data from last successful artifact
-    - name: Download artifact
+    - name: Download old stats from artifact
       uses: dawidd6/action-download-artifact@v2
       with:
         workflow: stats.yml
@@ -24,23 +24,14 @@ jobs:
         name: traffic
    
     # Calculates traffic and clones and stores in CSV file
-    - name: GitHub traffic 
+    - name: Get new GitHub stats 
       uses: sangonzal/repository-traffic-action@v0.1.4
       env:
         TRAFFIC_ACTION_TOKEN: ${{ secrets.TRAFFIC_ACTION_TOKEN }} 
      
     # Uploads new data as artifact 
-    - name: Upload traffic
+    - name: Upload new stats as artifact
       uses: actions/upload-artifact@v2
       with:
         name: traffic
         path: ./traffic/ # path/to/artifact
-
-    # Commits files to repository
-    - name: Commit changes
-      uses: EndBug/add-and-commit@v4
-      with:
-        author_name: test_user
-        message: "GitHub traffic"
-        add: "./traffic/*"
-        ref: "master"  # commits to branch "traffic" 
