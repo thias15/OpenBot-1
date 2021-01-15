@@ -22,6 +22,7 @@ jobs:
         workflow: stats.yml
         workflow_conclusion: success
         name: traffic
+        path: ./traffic/ # path/to/artifact
     - name: print dir
       run: ls -la
    
