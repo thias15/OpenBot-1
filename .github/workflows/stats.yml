@@ -22,22 +22,17 @@ jobs:
         workflow: stats.yml
         workflow_conclusion: success
         name: traffic
-        path: ./traffic/ # path/to/artifact
-    - name: print dir
-      run: ls -la traffic
+        path: ./traffic/ 
    
     # Calculates traffic and clones and stores in CSV file
     - name: Get new GitHub stats 
       uses: sangonzal/repository-traffic-action@v0.1.4
       env:
         TRAFFIC_ACTION_TOKEN: ${{ secrets.TRAFFIC_ACTION_TOKEN }} 
-
-    - name: print dir
-      run: ls -la traffic
       
     # Uploads new data as artifact 
     - name: Upload new stats as artifact
       uses: actions/upload-artifact@v2
       with:
         name: traffic
-        path: ./traffic/ # path/to/artifact
+        path: ./traffic/ 
