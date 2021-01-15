@@ -15,8 +15,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
    
-    # Calculates traffic and clones and stores in CSV file
-    - name: Get new Github traffic 
+    # Calculates traffic and clones based on Github insights and stores in CSV file
+    - name: Get new traffic 
       uses: sangonzal/repository-traffic-action@v0.1.4
       env:
         TRAFFIC_ACTION_TOKEN: ${{ secrets.TRAFFIC_TOKEN }} 
@@ -27,4 +27,3 @@ jobs:
       with:
         name: traffic
         path: ./traffic/ 
-
