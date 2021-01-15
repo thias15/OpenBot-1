@@ -15,12 +15,21 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
    
+    # Gets the data from last successful artifact
+    - name: Download artifact
+      uses: dawidd6/action-download-artifact@v2
+      with:
+        workflow: stats.yml
+        workflow_conclusion: success
+        name: traffic
+   
     # Calculates traffic and clones and stores in CSV file
     - name: GitHub traffic 
       uses: sangonzal/repository-traffic-action@v0.1.4
       env:
         TRAFFIC_ACTION_TOKEN: ${{ secrets.TRAFFIC_ACTION_TOKEN }} 
      
+    # Uploads new data as artifact 
     - name: Upload traffic
       uses: actions/upload-artifact@v2
       with:
