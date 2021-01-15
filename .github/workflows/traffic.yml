@@ -5,7 +5,7 @@ on:
   push:
     branches: [ master ]
     paths:
-    - '.github/workflows/stats.yml'
+    - '.github/workflows/traffic.yml'
 jobs:
   # This workflow contains a single job called "traffic"
   traffic:
@@ -15,24 +15,25 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
    
-    # Gets the data from last successful artifact
-    - name: Download old stats from artifact
+    # Gets the old traffic from last successful artifact
+    - name: Download old traffic
       uses: dawidd6/action-download-artifact@v2
       with:
-        workflow: stats.yml
+        workflow: traffic.yml
         workflow_conclusion: success
         name: traffic
         path: ./traffic/ 
    
     # Calculates traffic and clones and stores in CSV file
-    - name: Get new GitHub stats 
+    - name: Get new Github traffic 
       uses: sangonzal/repository-traffic-action@v0.1.4
       env:
-        TRAFFIC_ACTION_TOKEN: ${{ secrets.TRAFFIC_ACTION_TOKEN }} 
+        TRAFFIC_ACTION_TOKEN: ${{ secrets.TRAFFIC_TOKEN }} 
       
-    # Uploads new data as artifact 
-    - name: Upload new stats as artifact
+    # Uploads new traffic as artifact 
+    - name: Upload new traffic
       uses: actions/upload-artifact@v2
       with:
         name: traffic
         path: ./traffic/ 
+
