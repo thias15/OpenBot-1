@@ -15,15 +15,6 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
    
-    # Gets the old traffic from last successful artifact
-    - name: Download old traffic
-      uses: dawidd6/action-download-artifact@v2
-      with:
-        workflow: traffic.yml
-        workflow_conclusion: success
-        name: traffic
-        path: ./traffic/ 
-   
     # Calculates traffic and clones and stores in CSV file
     - name: Get new Github traffic 
       uses: sangonzal/repository-traffic-action@v0.1.4
